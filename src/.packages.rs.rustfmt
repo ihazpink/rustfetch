@@ -1,0 +1,97 @@
+//! Module for finding package manager and number of packages
+//!
+//! Ported from [fastfetch]
+//!
+//! [fastfetch]: https://github.com/LinusDierheimer/fastfetch
+use std::fs;
+use std::path::Path;
+
+/// Unwraps expression or returns expression v
+macro_rules! unwrap_or_return {
+    ( $e:expr, $v:expr) => {
+        match $e {
+            Ok(x) => x,
+            Err(_) => return $v,
+        }
+    }
+}
+
+/// Type of entry in folder.
+enum EntryType {
+    File,
+    Dir
+}
+
+fn get_num_elements<P: AsRef<Path>>(path: P, entry_type: EntryType) -> usize {
+    let mut counter = 0;
+    for entry in unwrap_or_return!(fs::read_dir(path), 0) {
+        let entry = unwrap_or_return!(entry, 0);
+        let path = entry.path();
+        match entry_type {
+            EntryType::File => {
+                if path.is_file() { counter += 1 }
+            }
+            EntryType::Dir => {
+                if path.is_dir() {counter += 1}
+            }
+        }
+    }
+    counter
+}
+
+fn get_num_strings<P: AsRef<Path>>(path: P, needle: &'static str) -> usize {
+    let file = unwrap_or_return!(fs::read_to_string(path), 0);
+    file.matches(needle).count()
+}
+
+/// Enum of supported package managers.
+#[non_exhaustive]
+enum PackageManager {
+    Pacman(usize),
+    Dpkg(usize),
+    Xbps(usize),
+    Flatpak(usize),
+    Snap(usize),
+    Unknown
+}
+
+pub struct PackageManager {
+    pub name: &'static str,
+    entry_path: &'static str,
+    enrty_type: EntryType,
+    pub packages: &mut usize
+}
+
+impl PackageManager {
+    pub fn new(name: &'static str, entry_path: &'static str, entry_type: EntryType) -> PacakgeManager {
+        PackageManager {
+            name,
+            entry_path,
+            entry_type,
+            packages: 0
+        }
+    }
+}
+
+
+pub fn get_package_manager() -> PackageManager {
+    let pacman = get_num_elements("/var/lib/pacman/local", EntryType::Dir);
+    let dpkg = get_num_strings("/var/lib/dpkg/status", "Status: ");
+    let xbps = get_num_elements("/var/db/xbps", EntryType::File);
+    let flatpak = get_num_elements("/var/lib/flatpak/app", EntryType::Dir);
+    let snap = get_num_elements("/snap", EntryType::Dir);
+
+    let all = pacman + dpkg + xbps + flatpak + snap;
+
+    if all == 0 {
+        return PackageManager::Unknown
+    }
+    
+}
+
+/// Attempts to find number of packages and package manager
+///
+/// Currently supports: [PackageManagers]
+pub fn print_packages() {
+
+}
