@@ -1,5 +1,7 @@
 # Rsfetch
 
+# DO NOT USE - NOT READY YET
+
 ### TODO
 
 Features
