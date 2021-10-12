@@ -1,0 +1,40 @@
+#+title: README
+#+author: ihazpink
+
+* Rustfetch - Neofetch but in rust!
+* WIP - Not ready for use yet
+
+* Roadmap
+** Features [%]
+*** TODO Make CLI
+*** TODO Load config from ~/.config/rustfetch
+
+** Code structure [%]
+*** TODO Handle better distro logos better
+
+** Logos [20%]
+*** TODO Debian
+*** TODO Ubuntu
+*** TODO Mint
+*** DONE Alpine
+*** TODO a LOT of others [1/100]
+
+** Print [38%]
+*** DONE title
+*** DONE seperator
+*** DONE distro & architecture
+*** DONE kernel
+*** DONE uptime
+*** DONE packages
+*** TODO shell
+*** TODO terminal emulator
+*** TODO gpu(s)
+*** TODO monitor(s) resolution
+*** TODO window manager
+*** TODO terminal font
+*** TODO default font
+*** TODO RAM used/total
+*** TODO disk(s) used/total
+*** TODO locale
+*** TODO colored squares
+*** DONE logo
