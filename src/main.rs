@@ -14,21 +14,20 @@ use modules::uptime::get_uptime;
 use nix::sys::{sysinfo, utsname};
 
 fn main() {
-    let mut config: Vec<String> = Vec::new();
-
     let distro = get_distro_struct();
     let uname = utsname::uname();
     let sysinfo = sysinfo::sysinfo().unwrap();
 
-    config.push(get_title(&uname));
-    config.push(get_seperator(&uname));
-    config.push(get_distro_and_arch(&distro, &uname));
-    config.push(get_kernel(&uname));
-    config.push(get_uptime(&sysinfo));
-
+    let logo = get_logo(&distro);
+    let mut config = vec![
+        get_title(&uname),
+        get_seperator(&uname),
+        get_distro_and_arch(&distro, &uname),
+        get_kernel(&uname),
+        get_uptime(&sysinfo),
+    ];
     // Append because get_packages() returns a vector
     config.append(&mut get_packages());
-    let logo = get_logo(&distro);
 
     print_logo_and_config(config, logo);
 }
