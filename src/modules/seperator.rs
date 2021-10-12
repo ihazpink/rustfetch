@@ -1,5 +1,6 @@
-use super::title::{get_hostname, get_username};
 use nix::sys::utsname::UtsName;
+
+use super::title::{get_hostname, get_username};
 
 pub fn get_seperator(uname: &UtsName) -> String {
     // +1 to account for @ sign

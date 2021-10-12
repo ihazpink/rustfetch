@@ -24,4 +24,3 @@ pub fn find_val(s: &str, key: &'static str, delim: &'static str) -> io::Result<S
         "Value not found for given key",
     ))
 }
-

@@ -1,14 +1,12 @@
 //! Module for getting distro name and logo, as well as system architecture
-//!
-//! TODO: get system architecture
+
+use std::fs;
+
+use colored::*;
+use nix::sys::utsname::UtsName;
 
 use crate::helpers::{find_val, unwrap_or_return};
 use crate::logo;
-use colored::*;
-
-use nix::sys::utsname::UtsName;
-
-use std::fs;
 
 /// Simple distro representation, used to make finding logos easier
 #[derive(Debug)]
@@ -37,7 +35,6 @@ impl Distro {
     }
 }
 
-
 /// Attempts to find user distro and logo
 pub fn get_distro_struct() -> Distro {
     let os_release = unwrap_or_return!(fs::read_to_string("/etc/os-release"), Distro::unknown());
@@ -49,7 +46,6 @@ pub fn get_distro_struct() -> Distro {
 
     Distro { name, id }
 }
-
 
 pub fn get_distro_and_arch(distro: &Distro, uname: &UtsName) -> String {
     let arch = uname.machine();

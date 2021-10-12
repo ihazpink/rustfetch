@@ -4,8 +4,9 @@
 use std::path::Path;
 use std::{fmt, fs};
 
-use crate::helpers::unwrap_or_return;
 use colored::*;
+
+use crate::helpers::unwrap_or_return;
 
 /// Type of entry in directory
 enum EntryType {
@@ -62,22 +63,18 @@ impl fmt::Display for PackageManager {
 ///
 /// Currently supports: pacman, dpkg, xbps, flatpak, snap
 pub fn get_packages() -> Vec<String> {
-    let mut package_managers = vec![ 
-    PackageManager::new(
-        "pacman",
-        get_num_elements("/var/lib/pacman/local", EntryType::Dir)),
-    PackageManager::new(
-        "dpkg",
-        get_num_strings("/var/lib/dpkg/status", "Status: ")),
-    PackageManager::new(
-        "xbps",
-        get_num_elements("/var/db/xbps", EntryType::File)),
-    PackageManager::new(
-        "flatpak",
-        get_num_elements("/var/lib/flatpak/app", EntryType::Dir)),
-    PackageManager::new(
-        "snap",
-        get_num_elements("/snap", EntryType::Dir)),
+    let mut package_managers = vec![
+        PackageManager::new(
+            "pacman",
+            get_num_elements("/var/lib/pacman/local", EntryType::Dir),
+        ),
+        PackageManager::new("dpkg", get_num_strings("/var/lib/dpkg/status", "Status: ")),
+        PackageManager::new("xbps", get_num_elements("/var/db/xbps", EntryType::File)),
+        PackageManager::new(
+            "flatpak",
+            get_num_elements("/var/lib/flatpak/app", EntryType::Dir),
+        ),
+        PackageManager::new("snap", get_num_elements("/snap", EntryType::Dir)),
     ];
 
     package_managers = package_managers
