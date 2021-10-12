@@ -1,11 +1,11 @@
-//! Stores distro logos as str constants
+//! Stores di&stro logos as &str constants
 //!
 //! Logos taken from [neofetch]
 //!
 //! [neofetch]: https://github.com/dylanaraps/neofetch
 #![allow(dead_code)]
 
-pub const AIX_LOGO: &'static str = "
+pub const AIX_LOGO: &str = "
            `:+ssssossossss+-`
         .oys///oyhddddhyo///sy+.
       /yo:+hNNNNNNNNNNNNNNNNh+:oy/
@@ -28,13 +28,13 @@ h//NNNNh  ossss` +h  md- .hm/ `sNNNNN:+y
             -/osssossossso/-
 ";
 
-pub const APERIO_LOGO: &'static str = "
+pub const APERIO_LOGO: &str = "
  _.._  _ ._.. _
 (_][_)(/,[  |(_)
    |   GNU/Linux
 ";
 
-pub const ALPINE_LOGO: &'static str = "
+pub const ALPINE_LOGO: &str = "
        .hddddddddddddddddddddddh.
       :dddddddddddddddddddddddddd:
      /dddddddddddddddddddddddddddd/
@@ -57,7 +57,7 @@ hdddyo+ohddyosdddddddddho+oydddy++ohdddh
        .hddddddddddddddddddddddh.
 ";
 
-pub const ARCH_LOGO: &'static str = "
+pub const ARCH_LOGO: &str = "
                   ▄
                  ▄█▄
                 ▄███▄
@@ -79,7 +79,7 @@ pub const ARCH_LOGO: &'static str = "
 ▄▀▀                               ▀▀▄
 ";
 
-pub const ARTIX_LOGO: &'static str = "
+pub const ARTIX_LOGO: &str = "
                    '
                   'o'
                  'ooo'
