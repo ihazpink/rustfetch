@@ -17,6 +17,6 @@ pub fn get_title(uname: &UtsName) -> String {
     format!(
         "{}@{}",
         get_username().bright_blue(),
-        get_hostname(&uname).bright_blue()
+        get_hostname(uname).bright_blue()
     )
 }

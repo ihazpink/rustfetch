@@ -12,7 +12,7 @@ macro_rules! unwrap_or_return {
 pub(crate) use unwrap_or_return;
 
 /// Finds value for a given key in a key-pair string
-pub fn find_val(s: &String, key: &'static str, delim: &'static str) -> io::Result<String> {
+pub fn find_val(s: &str, key: &'static str, delim: &'static str) -> io::Result<String> {
     for line in s.lines() {
         let mut line = line.split(delim);
         if line.next() == Some(key) {

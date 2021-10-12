@@ -62,34 +62,30 @@ impl fmt::Display for PackageManager {
 ///
 /// Currently supports: pacman, dpkg, xbps, flatpak, snap
 pub fn get_packages() -> Vec<String> {
-    let mut package_managers = Vec::new();
-    package_managers.push(PackageManager::new(
+    let mut package_managers = vec![ 
+    PackageManager::new(
         "pacman",
-        get_num_elements("/var/lib/pacman/local", EntryType::Dir),
-    ));
-    package_managers.push(PackageManager::new(
+        get_num_elements("/var/lib/pacman/local", EntryType::Dir)),
+    PackageManager::new(
         "dpkg",
-        get_num_strings("/var/lib/dpkg/status", "Status: "),
-    ));
-    package_managers.push(PackageManager::new(
+        get_num_strings("/var/lib/dpkg/status", "Status: ")),
+    PackageManager::new(
         "xbps",
-        get_num_elements("/var/db/xbps", EntryType::File),
-    ));
-    package_managers.push(PackageManager::new(
+        get_num_elements("/var/db/xbps", EntryType::File)),
+    PackageManager::new(
         "flatpak",
-        get_num_elements("/var/lib/flatpak/app", EntryType::Dir),
-    ));
-    package_managers.push(PackageManager::new(
+        get_num_elements("/var/lib/flatpak/app", EntryType::Dir)),
+    PackageManager::new(
         "snap",
-        get_num_elements("/snap", EntryType::Dir),
-    ));
+        get_num_elements("/snap", EntryType::Dir)),
+    ];
 
     package_managers = package_managers
         .into_iter()
         .filter(|p| p.packages != 0)
         .collect();
 
-    if package_managers.len() == 0 as usize {
+    if package_managers.is_empty() {
         panic!("Package manager not found!")
     }
 

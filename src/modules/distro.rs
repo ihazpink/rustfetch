@@ -43,9 +43,9 @@ pub fn get_distro_struct() -> Distro {
     let os_release = unwrap_or_return!(fs::read_to_string("/etc/os-release"), Distro::unknown());
 
     let name = find_val(&os_release, "PRETTY_NAME", "=")
-        .unwrap_or("Unknown".to_string())
+        .unwrap_or_else(|_| "Unknown".to_string())
         .replace("\"", "");
-    let id = find_val(&os_release, "ID", "=").unwrap_or("Unknown".to_string());
+    let id = find_val(&os_release, "ID", "=").unwrap_or_else(|_| "Unknown".to_string());
 
     Distro { name, id }
 }
