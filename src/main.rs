@@ -30,9 +30,13 @@ fn main() {
 
     // Append because get_packages() returns a vector
     config.append(&mut get_packages());
-
     let logo = get_logo(&distro);
+    
+    print_logo_and_config(config, logo);
+}
 
+
+fn print_logo_and_config(config: Vec<String>, logo: &'static str) {
     for pair in logo.lines().zip_longest(config.iter()) {
         match pair {
             Both(l, r) => println!("{0: <40}{1: <40}", l.bright_blue(), r),
