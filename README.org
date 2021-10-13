@@ -1,40 +1,39 @@
-#+title: README
+#+title: Rustfetch - Neofetch but in rust!
 #+author: ihazpink
 
-* Rustfetch - Neofetch but in rust!
-* WIP - Not ready for use yet
+ **WIP - Not ready for use yet**
 
 * Roadmap
-** Features [%]
-*** TODO Make CLI
-*** TODO Load config from ~/.config/rustfetch
+- Features [0%]
+  - [ ] Make CLI
+  - [ ] Load config from ~/.config/rustfetch
 
-** Code structure [%]
-*** TODO Handle better distro logos better
+- Code structure [0%]
+  - [ ] Handle better distro logos better
 
-** Logos [20%]
-*** TODO Debian
-*** TODO Ubuntu
-*** TODO Mint
-*** DONE Alpine
-*** TODO a LOT of others [1/100]
+- Logos [25%]
+  - [ ] Debian
+  - [ ] Ubuntu
+  - [ ] Mint
+  - [X] Alpine
+  - [ a LOT of others
 
-** Print [38%]
-*** DONE title
-*** DONE seperator
-*** DONE distro & architecture
-*** DONE kernel
-*** DONE uptime
-*** DONE packages
-*** TODO shell
-*** TODO terminal emulator
-*** TODO gpu(s)
-*** TODO monitor(s) resolution
-*** TODO window manager
-*** TODO terminal font
-*** TODO default font
-*** TODO RAM used/total
-*** TODO disk(s) used/total
-*** TODO locale
-*** TODO colored squares
-*** DONE logo
+- Print [38%]
+  - [X] title
+  - [X] seperator
+  - [X] distro & architecture
+  - [X] kernel
+  - [X] uptime
+  - [X] packages
+  - [ ] shell
+  - [ ] terminal emulator
+  - [ ] gpu(s)
+  - [ ] monitor(s) resolution
+  - [ ] window manager
+  - [ ] terminal font
+  - [ ] default font
+  - [ ] RAM used/total
+  - [ ] disk(s) used/total
+  - [ ] locale
+  - [ ] colored squares
+  - [X] logo
