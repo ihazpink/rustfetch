@@ -4,3 +4,4 @@ pub mod packages;
 pub mod seperator;
 pub mod title;
 pub mod uptime;
+pub mod battery;

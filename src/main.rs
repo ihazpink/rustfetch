@@ -11,6 +11,7 @@ use modules::packages::get_packages;
 use modules::seperator::get_seperator;
 use modules::title::get_title;
 use modules::uptime::get_uptime;
+use modules::battery::get_battery;
 use nix::sys::{sysinfo, utsname};
 
 fn main() {
@@ -25,6 +26,7 @@ fn main() {
         get_distro_and_arch(&distro, &uname),
         get_kernel(&uname),
         get_uptime(&sysinfo),
+        get_battery(),
     ];
     // Append because get_packages() returns a vector
     config.append(&mut get_packages());
