@@ -28,7 +28,7 @@
 	* [ ] system font
 	* [ ] RAM used/total
 	* [ ] disk(s) used/total
-	* [ ] locale
+	* [X] locale
 	* [ ] colored squares
 	* [X] logo
 

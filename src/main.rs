@@ -5,13 +5,14 @@ mod modules;
 use colored::*;
 use itertools::EitherOrBoth::*;
 use itertools::Itertools;
+use modules::battery::get_battery;
 use modules::distro::{get_distro_and_arch, get_distro_struct, get_logo};
 use modules::kernel::get_kernel;
+use modules::locale::get_locale;
 use modules::packages::get_packages;
 use modules::seperator::get_seperator;
 use modules::title::get_title;
 use modules::uptime::get_uptime;
-use modules::battery::get_battery;
 use nix::sys::{sysinfo, utsname};
 
 fn main() {
@@ -27,6 +28,7 @@ fn main() {
         get_kernel(&uname),
         get_uptime(&sysinfo),
         get_battery(),
+        get_locale(),
     ];
     // Append because get_packages() returns a vector
     config.append(&mut get_packages());
