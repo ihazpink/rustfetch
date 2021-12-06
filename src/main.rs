@@ -16,6 +16,7 @@ use modules::seperator::get_seperator;
 use modules::title::get_title;
 use modules::uptime::get_uptime;
 use modules::ifaddrs::get_ifaddrs;
+use modules::editor::get_editor;
 
 
 fn main() {
@@ -33,6 +34,7 @@ fn main() {
         get_uptime(&sysinfo),
         get_battery(),
         get_locale(),
+        get_editor(),
     ];
     // Append because get_packages() returns a vector
     config.append(&mut get_packages());
