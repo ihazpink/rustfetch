@@ -36,6 +36,7 @@ fn get_num_elements<P: AsRef<Path>>(path: P, entry_type: EntryType) -> usize {
     counter
 }
 
+// FIXME: Make not retarded - take in string instead of path, document this bitch
 fn get_num_strings<P: AsRef<Path>>(path: P, needle: &'static str) -> usize {
     let file = unwrap_or_return!(fs::read_to_string(path), 0);
     file.matches(needle).count()

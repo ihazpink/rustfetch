@@ -7,3 +7,4 @@ pub mod seperator;
 pub mod title;
 pub mod uptime;
 pub mod wmde;
+pub mod ifaddrs;

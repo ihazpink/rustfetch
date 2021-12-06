@@ -1,4 +1,4 @@
-//! Stores di&stro logos as &str constants
+//! Stores distro logos as &str constants
 //!
 //! Logos taken from [neofetch]
 //!
