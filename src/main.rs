@@ -17,6 +17,7 @@ use modules::title::get_title;
 use modules::uptime::get_uptime;
 use modules::ifaddrs::get_ifaddrs;
 use modules::editor::get_editor;
+use modules::processes::get_processes;
 
 
 fn main() {
@@ -35,6 +36,7 @@ fn main() {
         get_battery(),
         get_locale(),
         get_editor(),
+        get_processes(&sysinfo),
     ];
     // Append because get_packages() returns a vector
     config.append(&mut get_packages());

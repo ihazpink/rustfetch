@@ -9,3 +9,4 @@ pub mod uptime;
 pub mod wmde;
 pub mod ifaddrs;
 pub mod editor;
+pub mod processes;
